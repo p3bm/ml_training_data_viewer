@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import seaborn as sns
+import io
 
 # Create app
 st.image('./catsci-logo (1).svg', width=300)
@@ -38,7 +39,9 @@ st.write(f"Overview of data in {data_column}:")
 st.write(data[data_column].describe())
 
 st.write(f"Missing value information for {data_column}:")
-data[[data_column]].info()
+buffer = io.StringIO()
+data[data_column].info(buf=buffer)
+st.write(buffer.getvalue())
 
 if st.toggle(f"View value counts for {data_column}"):
     st.write(data[data_column].value_counts())
