@@ -33,7 +33,7 @@ data_column = st.selectbox(
 
 st.write(f"Total number of values: {len(data[data_column])}")
 st.write(f"Data type: {data[data_column].dtypes}")
-st.write(f"Number of missing values: {data[data_column].isna()}")
+st.write(f"Number of missing values: {data[data_column].isna().sum()}")
 
 st.write(f"Overview of data in {data_column}:")
 st.write(data[data_column].describe())
