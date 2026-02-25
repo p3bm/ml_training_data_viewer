@@ -75,6 +75,7 @@ columns_to_pairplot = st.multiselect("Select multiple columns to create pair plo
 if columns_to_pairplot:
     try:
         sns.pairplot(data[columns_to_pairplot])
+        st.pyplot()
     except Exception as e:
         st.error(e)
         st.error(f"Unable to generate pair plot(s) for one or more selected columns")
