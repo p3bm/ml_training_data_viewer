@@ -35,8 +35,8 @@ st.write(data[data_column].describe())
 if st.toggle(f"View value counts for {data_column}"):
     st.write(data[data_column].value_counts())
 
-fig, ax = data[data_column].hist()
-st.pyplot(fig)
+data[data_column].hist()
+st.pyplot()
 st.pyplot(data[[data_column]].boxplot())
 
 # Single column plots
