@@ -60,7 +60,7 @@ columns_to_boxplot = st.multiselect("Select multiple columns to create box plots
 
 if columns_to_boxplot:
     try:
-        data[[columns_to_plot]].boxplot()
+        data[[columns_to_boxplot]].boxplot()
         st.pyplot()
     except ValueError as e:
         st.error(e)
@@ -74,7 +74,7 @@ columns_to_pairplot = st.multiselect("Select multiple columns to create pair plo
 
 if columns_to_pairplot:
     try:
-        sns.pairplot(data[[columns_to_plot]])
+        sns.pairplot(data[[columns_to_pairplot]])
     except Exception as e:
         st.error(e)
         st.error(f"Unable to generate pair plot(s) for one or more selected columns")
