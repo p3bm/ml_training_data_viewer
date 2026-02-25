@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 
 # Create app
-st.image('./catsci-logo.svg')
+st.image('./catsci-logo (1).svg')
 st.title("ML Training Data Viewer")
 
 # Load data
