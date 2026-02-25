@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import seaborn as sns
 
 # Create app
 st.image('./catsci-logo (1).svg', width=300)
@@ -35,12 +36,45 @@ st.write(data[data_column].describe())
 if st.toggle(f"View value counts for {data_column}"):
     st.write(data[data_column].value_counts())
 
-data[data_column].hist()
-st.pyplot()
-st.pyplot(data[[data_column]].boxplot())
+if st.toggle(f"View histogram for {data_column}"):
+    try:
+        data[data_column].hist()
+        st.pyplot()
+    except ValueError as e:
+        st.error(e)
+        st.error(f"Unable to generate histogram for {data_column}")
 
-# Single column plots
-# histogram
-# box plot(s)
+if st.toggle(f"View box plot for {data_column}"):
+    try:
+        data[[data_column]].boxplot()
+        st.pyplot()
+    except ValueError as e:
+        st.error(e)
+        st.error(f"Unable to generate box plot for {data_column}")
+
+# Multiple column box plots
+st.divider()
+st.subheader("Multiple Column Box Plots")
+
+columns_to_plot = st.multiselect("Select multiple columns for plot box plots for", options = data.columns)
+
+if columns:
+    try:
+        data[[columns_to_plot]].boxplot()
+        st.pyplot()
+    except ValueError as e:
+        st.error(e)
+        st.error(f"Unable to generate box plot for one or more selected columns")
 
 # Pairwise plots
+st.divider()
+st.subheader("Pair Plots")
+
+columns_to_plot = st.multiselect("Select multiple columns for plot box plots for", options = data.columns)
+
+if columns:
+    try:
+        sns.pairplot(data[[columns_to_plot]])
+    except Exception as e:
+        st.error(e)
+        st.error(f"Unable to generate pair plot for one or more selected columns")
