@@ -56,7 +56,7 @@ if st.toggle(f"View box plot for {data_column}"):
 st.divider()
 st.subheader("Multiple Column Box Plots")
 
-columns_to_boxplot = st.multiselect("Select multiple columns for plot box plots for", options = data.columns)
+columns_to_boxplot = st.multiselect("Select multiple columns to create box plots for", options = data.columns)
 
 if columns_to_boxplot:
     try:
@@ -64,17 +64,17 @@ if columns_to_boxplot:
         st.pyplot()
     except ValueError as e:
         st.error(e)
-        st.error(f"Unable to generate box plot for one or more selected columns")
+        st.error(f"Unable to generate box plot(s) for one or more selected columns")
 
 # Pairwise plots
 st.divider()
 st.subheader("Pair Plots")
 
-columns_to_pairplot = st.multiselect("Select multiple columns for plot box plots for", options = data.columns)
+columns_to_pairplot = st.multiselect("Select multiple columns to create pair plots for", options = data.columns)
 
 if columns_to_pairplot:
     try:
         sns.pairplot(data[[columns_to_plot]])
     except Exception as e:
         st.error(e)
-        st.error(f"Unable to generate pair plot for one or more selected columns")
+        st.error(f"Unable to generate pair plot(s) for one or more selected columns")
