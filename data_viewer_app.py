@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 import seaborn as sns
-import io
 
 # Create app
 st.image('./catsci-logo (1).svg', width=300)
