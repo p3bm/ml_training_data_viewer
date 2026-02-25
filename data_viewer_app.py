@@ -38,7 +38,7 @@ st.write(f"Overview of data in {data_column}:")
 st.write(data[data_column].describe())
 
 st.write(f"Missing value information for {data_column}:")
-st.write(data[[data_column]].info())
+data[[data_column]].info()
 
 if st.toggle(f"View value counts for {data_column}"):
     st.write(data[data_column].value_counts())
